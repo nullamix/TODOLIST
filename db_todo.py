@@ -44,8 +44,9 @@ def marking():
     conn.commit()
 
 
-def add_task():
-    task = input("enter content of your task:")
+def add_task(task: str | None = None):
+    if task is None:
+        task = input("enter content of your task:")
     cursor.execute(
         "INSERT INTO list (todo, status_of_todo) VALUES (%s, %s)",
         (task, None)
